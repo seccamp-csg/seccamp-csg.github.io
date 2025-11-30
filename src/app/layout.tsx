@@ -13,7 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "セキュリティ・キャンプ コミュニティ支援グループ",
+  title: {
+    template: "%s - セキュリティ・キャンプ コミュニティ支援グループ",
+    default: "セキュリティ・キャンプ コミュニティ支援グループ",
+  },
   description:
     "セキュリティ・キャンプ修了生の交流と支援を促進するワーキンググループです",
 };
