@@ -1,13 +1,32 @@
-/* Global styles for the new design */
+@import "tailwindcss";
+
+/* --- Design tokens --- */
 :root {
+  /* Legacy / system */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Bright theme tokens */
   --bg-1: #f0fbff; /* 明るい空色 */
   --bg-2: #e6f7ff; /* やや濃いめの薄青 */
   --bg-3: #ffffffe6; /* コンテンツ背景用の白 */
-  --accent: #0366d6; /* 濃いブルー（ノード色） */
-  --line: #8fdcff; /* つながり線（明るめシアン） */
+  --accent: #0366d6; /* 濃いブルー（アクセント） */
+  --line: #8fdcff; /* つながり線 */
   --line-2: #cacaca; /* 仕切り線 */
-  --muted: #083048; /* テキスト用濃色 */
+  --muted: #083048; /* 濃いテキスト色 */
 }
+
+/* design-system integrations removed (@theme not standard) */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    /* ダーク向けにトークン差し替えしたい場合はここで上書き */
+  }
+}
+
+/* --- Reset / base --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,14 +37,15 @@ body {
   height: 100%;
 }
 body {
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  color: var(--muted);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial;
-  color: var(--muted);
-  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Links */
 a {
   color: var(--accent);
   text-decoration: none;
@@ -34,6 +54,7 @@ a:hover {
   text-decoration: underline;
 }
 
+/* --- Layout helpers --- */
 main {
   position: relative;
   z-index: 10;
@@ -41,7 +62,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  justify-items: center;
 }
 
 h2 {
@@ -49,7 +69,7 @@ h2 {
   margin: 0 0 10px 0;
   color: var(--accent);
   width: 100%;
-  border-bottom: var(--accent) 2px solid;
+  border-bottom: 2px solid var(--accent);
 }
 
 .site-header {
@@ -88,11 +108,19 @@ h2 {
   text-align: center;
   max-width: 900px;
   padding: 48px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.55)
+  );
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
 }
 .hero-content h1 {
   font-size: 48px;
   margin-bottom: 12px;
   color: var(--muted);
+  line-height: 1.15;
 }
 .hero-content p {
   color: rgba(8, 48, 72, 0.85);
@@ -124,7 +152,7 @@ footer {
   padding: 24px 12px;
   color: rgba(8, 48, 72, 0.6);
   background: var(--bg-3);
-  border-top: var(--line-2) 1px solid;
+  border-top: 1px solid var(--line-2);
   width: 100vw;
 }
 
@@ -133,7 +161,7 @@ section {
   padding-top: 72px;
 }
 
-/* News / Article list */
+/* --- News / Article list --- */
 .article-list {
   background: var(--bg-3);
   box-shadow: 0 6px 18px rgba(8, 48, 72, 0.06);
@@ -144,6 +172,7 @@ section {
 .article-list > div {
   max-width: 900px;
   margin: 0 auto;
+  padding: 18px 20px;
 }
 .article-list ul {
   list-style: none;
