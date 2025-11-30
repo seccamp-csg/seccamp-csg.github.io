@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import "./index.css";
+import ArticleList from "../components/ArticleLists";
 
 export const metadata: Metadata = {
   title:
@@ -34,20 +35,7 @@ export default function Home() {
       <section className="article-list" id="news">
         <div>
           <h2>最新情報</h2>
-          <ul>
-            <li>
-              <div className="article-meta">
-                <time dateTime="2024-06-15">2024年6月15日</time>
-                <a href="#" className="article-title">
-                  コミュニティ支援Gのウェブサイトを公開しました
-                </a>
-              </div>
-              <a href="#" className="btn2 small">
-                {" "}
-                詳しく見る{" "}
-              </a>
-            </li>
-          </ul>
+          <ArticleList dirPath="posts" routingPath="/posts" />
         </div>
       </section>
     </main>

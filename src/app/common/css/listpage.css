@@ -1,0 +1,11 @@
+.article-list {
+  background-color: var(--bg-3);
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.article-list > div {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 18px 20px;
+}
